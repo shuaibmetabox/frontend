@@ -1,0 +1,123 @@
+body{
+    background-color: rgb(184, 201, 213);
+}
+
+#container{
+    border: 6px solid black;
+    border-radius: 20px;
+    padding: 60px 20px;
+    width: 70%;
+    margin: 0 auto;
+    margin-top:80px ;
+}
+
+#title{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 70px;
+    color:rgba(0, 0, 0, 0.8);
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#desc {
+    margin-top: 12px;
+    text-align: center;
+    color: #3f5062;
+    font-family: sans-serif;
+    font-size: 1.5em;
+}
+
+/* Text box */
+#motivation{
+    width: 70%;
+    background-color: rgba(255, 255, 255, 0.886);
+    border-radius: 4px;
+    margin: 0 auto;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 1px 1px 30px black;
+}
+
+/*Right quote icon*/
+#icon{
+    background-color:rgb(208, 231, 240);
+    padding: 10px;
+    font-size: 35px;
+    color: rgb(170, 186, 197);;
+    border-radius: 150px;
+}
+
+/*Ready text*/
+#ready{
+    color: rgb(107, 127, 151);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/*Button*/
+#motivation a{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    background: #2b3846;;
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
+    margin-bottom: 20px;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+/*Icon in button*/
+#motivation a i{
+margin-right: 10px;
+font-size: 20px;
+}
+
+#motivation a:hover{
+    transform:scale(1.04,1.04);
+    background-color: rgba(77, 94, 121, 0.888);
+    box-shadow: 2px 2px 15px rgba(73, 84, 107, 0.888);
+    cursor: pointer;
+}
+#quote{
+    background-color: rgba(147, 183, 213, 0.718);
+    font-size: 25px;
+    border-radius: 10px;
+    width: 70%;
+    padding: 8px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#topbtn a,#bottombtn a{
+    text-decoration: none;
+    color: white;
+    background-color: rgba(3, 3, 3, 0.881);
+    border-radius: 10px;
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 6px 12px;
+    margin: 0 8px;
+    display: inline-block;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+#topbtn a:hover, #bottombtn a:hover{
+    transform:scale(1.1,1.1);
+    background-color: rgb(47, 47, 47);
+}
+
+#topbtn{
+    margin: 0 auto;
+    width:50%;
+}
+
+#bottombtn{
+    margin: 0 auto;
+    width: 25%;
+    margin-top: 20px;
+}
