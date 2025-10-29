@@ -27,7 +27,7 @@ async function updateQuote(topic = null, initialLoad = false) {
 
     try {
         // --- API Call Setup ---
-        let apiUrl = '/api/motivation';
+        let apiUrl ='https://62859b3f-a13c-4f4f-bb69-66ab5bf6ee06-00-28rysu4yb3bg.spock.replit.dev:3000/api/motivation';
         if (topic) {
             // If a topic is provided by a category button, add it to the query
             apiUrl += `?topic=${encodeURIComponent(topic)}`;
