@@ -1,4 +1,5 @@
 // Function to handle the fetching and updating of the quote
+let activeRequestId = 0; // keep track of latest request ID
 async function updateQuote(topic = null, initialLoad = false) {
     const generateBtn = document.getElementById('generate-btn');
     const quoteEl = document.getElementById('quote');
@@ -8,6 +9,8 @@ async function updateQuote(topic = null, initialLoad = false) {
         console.error("Missing required elements or button not found.");
         return;
     }
+    // --- identify this request ---
+    const requestId = ++activeRequestId;
 
     // --- LOADING STATE SETUP ---
             //if theres button,   display original button content   else display generate motivation
@@ -44,18 +47,23 @@ async function updateQuote(topic = null, initialLoad = false) {
 
         const data = await response.json(); //get the data in a javascript object
 
+        // 🧠 Ignore if this request is outdated
+        if (requestId !== activeRequestId) return;
+
         // --- Success State ---
         quoteEl.textContent = `"${data.quote}"`; //replace quote and author
         authorEl.textContent = `- ${data.author}`;
         
     } catch (error) { //catch any error and provide error message if any error
+        // 🧠 Ignore outdated errors too
+        if (requestId !== activeRequestId) return;
         console.error('Error:', error);
         // --- Error State ---
         quoteEl.textContent = `"Error: Could not fetch motivation. Try again."`;
         authorEl.textContent = "- The Error Log";
     } finally {
         // --- Restore Button State ---
-        if (generateBtn) {
+        if (requestId === activeRequestId && generateBtn) {
             generateBtn.innerHTML = originalBtnText;
             generateBtn.disabled = false;
         } //then restore the original text even if it failed

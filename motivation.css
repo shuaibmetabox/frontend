@@ -121,3 +121,91 @@ font-size: 20px;
     width: 25%;
     margin-top: 20px;
 }
+
+@media (max-width: 768px) {
+  #container {
+    width: 90%;
+    padding: 40px 15px;
+  }
+
+  #title {
+    font-size: 45px;
+  }
+
+  #desc {
+    font-size: 1.2em;
+  }
+
+  #motivation {
+    width: 90%;
+    padding: 25px;
+  }
+
+  #quote {
+    width: 90%;
+    font-size: 20px;
+  }
+
+  #motivation a {
+    font-size: 24px;
+    padding: 8px 12px;
+  }
+
+  #topbtn a,
+  #bottombtn a {
+    display: block;
+    width: 80%;
+    margin: 10px auto;
+    font-size: 16px;
+  }
+}
+
+/* 📲 Extra small devices (max-width: 480px) */
+@media (max-width: 480px) {
+  #title {
+    font-size: 35px;
+  }
+
+  #desc {
+    font-size: 1em;
+  }
+
+  #icon {
+    font-size: 28px;
+    padding: 8px;
+  }
+
+  #quote {
+    font-size: 18px;
+    padding: 8px;
+  }
+
+  #motivation a {
+    font-size: 20px;
+    padding: 6px 10px;
+  }
+
+  #ready {
+    font-size: 18px;
+  }
+
+  #container {
+    border-width: 4px;
+    padding: 30px 10px;
+  }
+
+  #motivation {
+    box-shadow: none;
+  }
+}
+
+/* 💻 Large screens (over 1200px) */
+@media (min-width: 1200px) {
+  #container {
+    width: 60%;
+  }
+
+  #motivation {
+    width: 60%;
+  }
+}
