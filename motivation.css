@@ -143,8 +143,9 @@ font-size: 20px;
     }
     #topbtn a,
     #bottombtn a {
-        font-size: 16px;
-        padding: 8px 12px;
+        font-size: 12px;
+        padding: 5px 10px;
+        border-radius: 8px;
     }
 
     #topbtn,
