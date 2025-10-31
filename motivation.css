@@ -105,7 +105,7 @@ font-size: 20px;
     font-size: 18px;
     font-family: Arial, Helvetica, sans-serif;
     padding: 6px 12px;
-    margin: 0 8px;
+    margin: 0;
     display: inline-block;
     transition: transform 0.2s ease, background-color 0.2s ease;
     text-align: center;
@@ -135,6 +135,12 @@ font-size: 20px;
 }
 
 @media (max-width: 768px) {
+    #container{
+        padding-left: 15px;
+        padding-top: 15px;
+        padding-right: 15px;
+        padding-bottom: 24px;
+    }
     #topbtn a,
     #bottombtn a {
         font-size: 16px;
@@ -143,35 +149,37 @@ font-size: 20px;
 
     #topbtn,
     #bottombtn {
-        flex-direction: column;
-        align-items: center;
+        flex-direction: row;
+        justify-content: center;
         width: 90%;
     }
 
     #buttons {
-        padding: 10px;
+        padding: 6px;
     }
     #title{
         font-size: 45px;
     }
     #desc{
         font-size: 25px;
+        margin-bottom:0;
     }
      #motivation{
-        padding: 10px;
-        width: 90%;
+        padding: 20px;
+        width: 80%;
     }
     #icon{
-        font-size: 25px;
+        font-size: 22px;
     }
     #quote{
-        font-size: 20px;
+        font-size: 18px;
     }
     #motivation a i{
         font-size: 12px;
     }
     #motivation a{
         font-size: 15px;
+        margin-bottom: 0;
     }
 }
 
