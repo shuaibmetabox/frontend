@@ -1,6 +1,4 @@
 // Function to handle the fetching and updating of the quote
-// ✅ NEW: define a global AbortController variable
-let currentController = null;
 async function updateQuote(topic = null, initialLoad = false) {
     const generateBtn = document.getElementById('generate-btn');
     const quoteEl = document.getElementById('quote');
@@ -10,12 +8,7 @@ async function updateQuote(topic = null, initialLoad = false) {
         console.error("Missing required elements or button not found.");
         return;
     }
-    // ✅ NEW: Abort any previous ongoing request before starting a new one
-    if (currentController) {
-        currentController.abort();
-    }
-    Controller = new AbortController(); // create new controller for this request
-    currentController = controller; // track only the *latest* request
+
     // --- LOADING STATE SETUP ---
             //if theres button,   display original button content   else display generate motivation
     const originalBtnText = generateBtn ? generateBtn.innerHTML : "Generate Motivation";
@@ -42,7 +35,7 @@ async function updateQuote(topic = null, initialLoad = false) {
         }
         // If topic is null (main button click), the URL is just the original
 
-        const response = await fetch(apiUrl,{ signal: currentController.signal }); //fetch response from url (response in json)
+        const response = await fetch(apiUrl); //fetch response from url (response in json)
         
         if (!response.ok) {  //if response is not ok, get the error in json and throw
             const errorData = await response.json();
@@ -56,11 +49,6 @@ async function updateQuote(topic = null, initialLoad = false) {
         authorEl.textContent = `- ${data.author}`;
         
     } catch (error) { //catch any error and provide error message if any error
-        // ✅ NEW: ignore aborted requests (they’re expected)
-        if (error.name === 'AbortError') {
-            console.log('Previous request cancelled.');
-            return; // do nothing
-        }
 
         console.error('Error:', error);
         // --- Error State ---
@@ -68,13 +56,10 @@ async function updateQuote(topic = null, initialLoad = false) {
         authorEl.textContent = "- The Error Log";
     } finally {
         // --- Restore Button State ---
-        if (currentController === controller) {
-            if (generateBtn) {
-                generateBtn.innerHTML = originalBtnText;
-                generateBtn.disabled = false;
-            }
-            currentController = null;
-        }
+        if (generateBtn) { 
+            generateBtn.innerHTML = originalBtnText;
+            generateBtn.disabled = false;
+        } //then restore the original text even if it failed
     }
 }
 
