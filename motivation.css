@@ -1,5 +1,10 @@
+
 body{
-    background-color: rgb(184, 201, 213);
+    background-image: url('backg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
 }
 
 #container{
@@ -56,7 +61,6 @@ body{
     text-align: center;
     margin-bottom: 15px;
 }
-
 /*Button*/
 #motivation a{
     text-decoration: none;
@@ -104,108 +108,109 @@ font-size: 20px;
     margin: 0 8px;
     display: inline-block;
     transition: transform 0.2s ease, background-color 0.2s ease;
+    text-align: center;
+    white-space: nowrap; /*Without nowrap, long text might wrap like this:Work &
+                                                                        Career*/
 }
 
 #topbtn a:hover, #bottombtn a:hover{
     transform:scale(1.1,1.1);
     background-color: rgb(47, 47, 47);
 }
-
-#topbtn{
-    margin: 0 auto;
-    width:50%;
+#buttons{
+    display: flex;     
+    align-items: center; /*Center vertically*/
+    flex-direction: column; /*flex vertical*/
+    width: 100%;
 }
 
-#bottombtn{
-    margin: 0 auto;
-    width: 25%;
-    margin-top: 20px;
+#topbtn,#bottombtn{
+    display: flex;
+    justify-content: center; /*Center horizontally*/
+    flex-wrap: wrap; /* to allow going down*/
+    gap: 12px; /*both horizontal and vertical*/
+    margin-top: 10px;
+    width: 100%;
+    max-width: 800px; /*Prevent stretching too far*/
 }
 
 @media (max-width: 768px) {
-  #container {
-    width: 90%;
-    padding: 40px 15px;
-  }
+    #topbtn a,
+    #bottombtn a {
+        font-size: 16px;
+        padding: 8px 12px;
+    }
 
-  #title {
-    font-size: 45px;
-  }
+    #topbtn,
+    #bottombtn {
+        flex-direction: column;
+        align-items: center;
+        width: 90%;
+    }
 
-  #desc {
-    font-size: 1.2em;
-  }
-
-  #motivation {
-    width: 90%;
-    padding: 25px;
-  }
-
-  #quote {
-    width: 90%;
-    font-size: 20px;
-  }
-
-  #motivation a {
-    font-size: 24px;
-    padding: 8px 12px;
-  }
-
-  #topbtn a,
-  #bottombtn a {
-    display: block;
-    width: 80%;
-    margin: 10px auto;
-    font-size: 16px;
-  }
+    #buttons {
+        padding: 10px;
+    }
+    #title{
+        font-size: 45px;
+    }
+    #desc{
+        font-size: 25px;
+    }
+     #motivation{
+        padding: 10px;
+        width: 90%;
+    }
+    #icon{
+        font-size: 25px;
+    }
+    #quote{
+        font-size: 20px;
+    }
+    #motivation a i{
+        font-size: 12px;
+    }
+    #motivation a{
+        font-size: 15px;
+    }
 }
 
-/* 📲 Extra small devices (max-width: 480px) */
-@media (max-width: 480px) {
-  #title {
-    font-size: 35px;
-  }
-
-  #desc {
-    font-size: 1em;
-  }
-
-  #icon {
-    font-size: 28px;
-    padding: 8px;
-  }
-
-  #quote {
-    font-size: 18px;
-    padding: 8px;
-  }
-
-  #motivation a {
-    font-size: 20px;
-    padding: 6px 10px;
-  }
-
-  #ready {
-    font-size: 18px;
-  }
-
-  #container {
-    border-width: 4px;
-    padding: 30px 10px;
-  }
-
-  #motivation {
-    box-shadow: none;
-  }
-}
-
-/* 💻 Large screens (over 1200px) */
-@media (min-width: 1200px) {
-  #container {
-    width: 60%;
-  }
-
-  #motivation {
-    width: 60%;
-  }
+@media (max-width: 360px) {
+    #topbtn a,
+    #bottombtn a {
+        width: 100%;
+        font-size: 15px;
+        padding: 5px 0;
+    }
+    #title{
+        font-size: 35px;
+    }
+    #desc{
+        font-size: 18px;
+    }
+    #container{
+        padding: 20px;
+    }
+    #topbtn{
+        margin: 0;
+    }
+    #motivation{
+        padding: 10px;
+        width: 95%;
+    }
+    #icon{
+        font-size: 20px;
+    }
+    #quote{
+        font-size: 15px;
+    }
+    #motivation a i{
+        font-size: 12px;
+    }
+    #motivation a i{
+        font-size: 12px;
+    }
+    #motivation a{
+        font-size: 15px;
+    }
 }
