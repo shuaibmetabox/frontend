@@ -14,8 +14,8 @@ async function updateQuote(topic = null, initialLoad = false) {
     if (currentController) {
         currentController.abort();
     }
-    currentController = new AbortController(); // create new controller for this request
-
+    Controller = new AbortController(); // create new controller for this request
+    currentController = controller; // track only the *latest* request
     // --- LOADING STATE SETUP ---
             //if theres button,   display original button content   else display generate motivation
     const originalBtnText = generateBtn ? generateBtn.innerHTML : "Generate Motivation";
@@ -68,11 +68,13 @@ async function updateQuote(topic = null, initialLoad = false) {
         authorEl.textContent = "- The Error Log";
     } finally {
         // --- Restore Button State ---
-        if (generateBtn) { 
-            generateBtn.innerHTML = originalBtnText;
-            generateBtn.disabled = false;
-        } //then restore the original text even if it failed
-        currentController = null;
+        if (currentController === controller) {
+            if (generateBtn) {
+                generateBtn.innerHTML = originalBtnText;
+                generateBtn.disabled = false;
+            }
+            currentController = null;
+        }
     }
 }
 
