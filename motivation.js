@@ -13,7 +13,7 @@ async function updateQuote(topic = null, initialLoad = false) {
             //if theres topic,   display topic   else display general(no topic)
     const topicDisplay = topic ? topic : 'General Inspiration';
             //if just opened browser, (loading intial quote) else ...
-    const loadingMessage =`<i class="fa-solid fa-spinner fa-spin"> Fetching new quote on ${topicDisplay}...`;
+    const loadingMessage = `<i class="fa-solid fa-spinner fa-spin"></i> Fetching new quote on ${topicDisplay}...`;
 
     // if there's button, add the loading icon in button
     if (generateBtn) {
