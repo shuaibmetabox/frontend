@@ -17,9 +17,8 @@ async function updateQuote(topic = null, initialLoad = false) {
             //if just opened browser, (loading intial quote) else ...
     const loadingMessage = initialLoad ? `Loading initial quote...` : `Fetching new quote on ${topicDisplay}...`;
 
-    // if there's button, add the loading icon in button
+    // if there's button,
     if (generateBtn) {
-        generateBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Generating...';
         generateBtn.disabled = true; //disable btn to avoid multiple clicks
     }
     
@@ -57,7 +56,6 @@ async function updateQuote(topic = null, initialLoad = false) {
     } finally {
         // --- Restore Button State ---
         if (generateBtn) { 
-            generateBtn.innerHTML = originalBtnText;
             generateBtn.disabled = false;
         } //then restore the original text even if it failed
     }
