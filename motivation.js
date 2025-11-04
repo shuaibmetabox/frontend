@@ -1,4 +1,5 @@
 // Function to handle the fetching and updating of the quote
+let currentFetchController = null;
 async function updateQuote(topic = null, initialLoad = false) {
     const generateBtn = document.getElementById('generate-btn');
     const quoteEl = document.getElementById('quote');
@@ -31,8 +32,16 @@ async function updateQuote(topic = null, initialLoad = false) {
             apiUrl += `?topic=${encodeURIComponent(topic)}`;
         }
         // If topic is null (main button click), the URL is just the original
+        if (currentFetchController) {
+            currentFetchController.abort();
+        }
 
-        const response = await fetch(apiUrl); //fetch response from url (response in json)
+        // 🔹 Create a new AbortController for this request
+        currentFetchController = new AbortController();
+        const { signal } = currentFetchController;
+
+        // 🔹 Pass signal to fetch so we can cancel it if needed
+        const response = await fetch(apiUrl, { signal }); //fetch response from url (response in json)
         
         if (!response.ok) {  //if response is not ok, get the error in json and throw
             const errorData = await response.json();
@@ -46,7 +55,10 @@ async function updateQuote(topic = null, initialLoad = false) {
         authorEl.textContent = `- ${data.author}`;
         
     } catch (error) { //catch any error and provide error message if any error
-
+        if (error.name === 'AbortError') {
+            console.warn('Previous fetch aborted.');
+            return; // exit silently
+        }
         console.error('Error:', error);
         // --- Error State ---
         quoteEl.textContent = `"Error: Could not fetch motivation. Try again."`;
