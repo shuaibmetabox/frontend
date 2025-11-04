@@ -20,7 +20,7 @@ async function updateQuote(topic = null, initialLoad = false) {
         generateBtn.disabled = true; //disable btn to avoid multiple clicks
     }
     
-    quoteEl.textContent = loadingMessage; //load this in quote
+    quoteEl.innerHTML = loadingMessage; //load this in quote
     authorEl.textContent = "";
 
     try {
