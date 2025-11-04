@@ -10,14 +10,12 @@ async function updateQuote(topic = null, initialLoad = false) {
     }
 
     // --- LOADING STATE SETUP ---
-            //if theres button,   display original button content   else display generate motivation
-    const originalBtnText = generateBtn ? generateBtn.innerHTML : "Generate Motivation";
             //if theres topic,   display topic   else display general(no topic)
     const topicDisplay = topic ? topic : 'General Inspiration';
             //if just opened browser, (loading intial quote) else ...
-    const loadingMessage = initialLoad ? `Loading initial quote...` : `Fetching new quote on ${topicDisplay}...`;
+    const loadingMessage =`<i class="fa-solid fa-spinner fa-spin"> Fetching new quote on ${topicDisplay}...`;
 
-    // if there's button,
+    // if there's button, add the loading icon in button
     if (generateBtn) {
         generateBtn.disabled = true; //disable btn to avoid multiple clicks
     }
@@ -62,8 +60,6 @@ async function updateQuote(topic = null, initialLoad = false) {
 }
 
 document.addEventListener('DOMContentLoaded', () => { //runs when page has fully loaded
-    // 1. Initial Load: Fetch and display a general quote immediately (topic=null)
-    updateQuote(null, true); //calls function
 
     // 2. Main Button Click: Generate a general quote (topic=null)
     const generateBtn = document.getElementById('generate-btn');
